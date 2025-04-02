@@ -14,7 +14,7 @@ interface Props {
 
 const routes = [
   { href: "/dashboard", label: "대시보드" },
-  { href: "/tracker", label: "가계부" },
+  { href: "/expense-tracker", label: "가계부" },
   { href: "/statistics", label: "통계" },
   { href: "/stocks", label: "주식" },
   { href: "/profile", label: "마이페이지" },
