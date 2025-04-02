@@ -11,6 +11,12 @@ export default function LandingPage() {
         <p className="text-lg text-gray-600">
           수입과 지출을 한눈에 파악하고, 당신만의 소비 리포트를 받아보세요.
         </p>
+        <Link
+          href="/auth"
+          className="inline-block bg-blue-600 text-white text-lg px-8 py-4 rounded-full shadow-md hover:bg-blue-700 transition"
+        >
+          시작하기
+        </Link>
       </header>
 
       <section className="max-w-4xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-8 items-center">
@@ -83,7 +89,7 @@ export default function LandingPage() {
       <div className="w-full bg-gray-100 py-16 px-6 text-center">
         <h2 className="text-3xl font-bold mb-4">지금 바로 시작해보세요!</h2>
         <Link
-          href="/dashboard"
+          href="/auth"
           className="inline-block bg-blue-600 text-white text-lg px-8 py-4 rounded-full shadow-md hover:bg-blue-700 transition"
         >
           시작하기
