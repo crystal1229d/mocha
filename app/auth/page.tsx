@@ -1,4 +1,4 @@
-import AuthUI from "@/components/features/auth/auth-ui";
+import AuthUI from "@/features/auth/auth-ui";
 
 export default function AuthPage() {
   return (

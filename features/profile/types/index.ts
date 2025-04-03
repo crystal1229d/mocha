@@ -1,4 +1,4 @@
-import { Database } from "../supabase";
+import { Database } from "@/types/supabase";
 import { User } from "@supabase/supabase-js";
 
 export type Profile = Database["public"]["Tables"]["profiles"]["Row"];

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { User } from "@supabase/supabase-js";
-import { createSupabaseBrowserClient } from "@/lib/client/supabase";
+import { createSupabaseBrowserClient } from "@/lib/supabase/supabase-client";
 import useHydrate from "@/hooks/useHydrate";
 
 export default function AuthUI() {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { createSupabaseBrowserClient } from "@/lib/client/supabase";
+import { createSupabaseBrowserClient } from "@/lib/supabase/supabase-client";
 import { User } from "@supabase/supabase-js";
 import Image from "next/image";
 

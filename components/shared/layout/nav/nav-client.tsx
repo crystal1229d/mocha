@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { clsx } from "clsx";
 import { User } from "@supabase/supabase-js";
-import AuthNav from "@/components/features/auth/auth-nav";
+import AuthNav from "@/features/auth/auth-nav";
 
 interface Props {
   user?: User | null;

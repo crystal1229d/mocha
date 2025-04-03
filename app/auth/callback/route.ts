@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createServerSideClient } from "@/lib/supabase";
+import { createServerSideClient } from "@/lib/supabase/supabase";
 
 export async function GET(request: Request) {
   const overrideOrigin = process.env.NEXT_PUBLIC_AUTH_REDIRECT_TO_HOME;
