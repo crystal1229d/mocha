@@ -21,15 +21,17 @@ export default function TransactionCategoryComponent() {
     return <p className="text-sm text-gray-500">로그인이 필요합니다.</p>;
 
   return (
-    <div className="grid grid-cols-2 gap-6  p-3 bg-white rounded-2xl text-black">
-      <div>
-        <h2 className="text-lg font-bold">카테고리 목록</h2>
-        <TransactionCategoryTree />
+    <>
+      <div className="grid grid-cols-2 gap-6  p-3 bg-white rounded-2xl text-black">
+        <div>
+          <h2 className="text-lg font-bold">카테고리 목록</h2>
+          <TransactionCategoryTree />
+        </div>
+        <div>
+          <h2 className="text-lg font-bold">카테고리 생성/수정</h2>
+          <TransactionCategoryForm userId={userId} />
+        </div>
       </div>
-      <div>
-        <h2 className="text-lg font-bold">카테고리 생성/수정</h2>
-        <TransactionCategoryForm userId={userId} />
-      </div>
-    </div>
+    </>
   );
 }
