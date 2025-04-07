@@ -2,11 +2,11 @@
 
 import { useEffect } from "react";
 import { useTransactionCategoryFormStore } from "../stores";
-import TransactionCategoryTree from "./category-tree";
-import TransactionCategoryForm from "./category-form";
+import TransactionCategoryTree from "./CategoryTree";
+import TransactionCategoryForm from "./CategoryForm";
 import { useUserStore } from "@/stores";
 
-export default function TransactionCategoryComponent() {
+export default function TransactionCategoryContainer() {
   const { fetch } = useTransactionCategoryFormStore();
 
   const userId = useUserStore((s) => s.userId);

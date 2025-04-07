@@ -1,5 +1,5 @@
 import { getProfileById, getUser } from "@/actions/auth/user.action";
-import ProfileCard from "@/features/profile/components/profile-card";
+import ProfileCard from "@/features/profile/components/ProfileCard";
 
 export default async function ProfilePage() {
   const user = await getUser({ serverComponent: true });

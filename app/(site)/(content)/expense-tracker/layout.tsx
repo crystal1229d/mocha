@@ -7,16 +7,16 @@ export const metadata: Metadata = {
 };
 
 export default function ExpenseTrackerLayout({
-  transactionCategoryForm,
-  transactionForm,
+  transactionCategoryManager,
+  transactionManager,
 }: {
-  transactionCategoryForm: React.ReactNode;
-  transactionForm: React.ReactNode;
+  transactionCategoryManager: React.ReactNode;
+  transactionManager: React.ReactNode;
 }) {
   return (
     <section className="flex flex-col gap-6 w-full h-full">
-      <>{transactionForm}</>
-      <>{transactionCategoryForm}</>
+      <>{transactionCategoryManager}</>
+      <>{transactionManager}</>
     </section>
   );
 }

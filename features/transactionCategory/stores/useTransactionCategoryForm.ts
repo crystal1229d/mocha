@@ -4,13 +4,13 @@ import { create } from "zustand";
 import {
   NewTransactionCatgory,
   TransactionCategory,
-} from "@/features/transaction-category/types";
+} from "@/features/transactionCategory/types";
 import {
   fetchCategories,
   updateCategory,
   insertCategory,
   softDeleteCategory,
-} from "@/features/transaction-category/actions";
+} from "@/features/transactionCategory/actions";
 
 type CategoryStore = {
   categories: TransactionCategory[];

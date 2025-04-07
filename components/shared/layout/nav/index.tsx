@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { User } from "@supabase/supabase-js";
-import NavClient from "./nav-client";
+import NavClient from "./NavClient";
 import { clsx } from "clsx";
 
 interface Props {

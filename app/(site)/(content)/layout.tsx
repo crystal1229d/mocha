@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "../../globals.css";
 import { getUser } from "@/actions/auth/user.action";
-import Nav from "@/components/shared/layout/nav/index";
+import Nav from "@/components/shared/layout/Nav/index";
 import AuthObserver from "@/components/shared/AuthObserver";
-import SubNav from "@/components/shared/layout/sub-nav";
+import SubNav from "@/components/shared/layout/SubNav";
 
 export const metadata: Metadata = {
   title: "MOCHA 가계부",

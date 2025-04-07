@@ -1,7 +1,7 @@
 import { buildTree } from "../lib";
 import { useTransactionCategoryFormStore } from "../stores";
 import { TRANSACTION_CATEGORY_TYPE_OPTIONS } from "../types";
-import CategoryNode from "./category-node";
+import CategoryNode from "./CategoryNode";
 
 export default function TransactionCategoryTree() {
   const { categories } = useTransactionCategoryFormStore();
