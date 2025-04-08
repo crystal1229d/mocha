@@ -1,6 +1,21 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerSideClientMiddleware } from "./lib/supabase/supabase";
 
+const protectedRoutes = ["/dashboard", "/expense-tracker"];
+const authPages = ["/auth"];
+
+function isProtectedRoute(pathname: string) {
+  return protectedRoutes.some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`)
+  );
+}
+
+function isAuthPage(pathname: string) {
+  return authPages.some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`)
+  );
+}
+
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
   const supabase = await createServerSideClientMiddleware(req, res);
@@ -8,28 +23,36 @@ export async function middleware(req: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
+  const { pathname } = req.nextUrl;
   const isLandingPage = req.nextUrl.pathname === "/";
-  const isDashboardPage = req.nextUrl.pathname.startsWith("/dashboard");
-  const isAuthPage = req.nextUrl.pathname.startsWith("/auth");
 
-  if (user && isLandingPage) {
-    // 로그인 사용자가 루트로 접근 시 대시보드로 리다이렉트
+  if (user && (isLandingPage || isAuthPage(pathname))) {
+    // 로그인 사용자가 랜딩&인증 페이지 접근 시 대시보드로 리다이렉트
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
-  if (!user && isDashboardPage) {
-    // 비로그인 사용자가 대시보드 접근 시 루트로 리다이렉트
+  if (!user && isProtectedRoute(pathname)) {
+    // 비로그인 사용자가 접근 시 랜딩페이지로 리다이렉트
     return NextResponse.redirect(new URL("/", req.url));
-  }
-
-  if (user && isAuthPage) {
-    // 로그인 사용자가 인증 페이지로 접근 시 대시보드로 리다이렉트
-    return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
   return res;
 }
 
+const matcher = [
+  "/",
+  ...protectedRoutes.map((r) => `${r}/:path*`),
+  ...authPages.map((a) => `${a}/:path*`),
+];
 export const config = {
-  matcher: ["/", "/auth/:path*", "/dashboard/:path*"],
+  matcher,
 };
+
+// export const config = {
+//   matcher: [
+//     "/",
+//     "/auth/:path*",
+//     "/dashboard/:path*",
+//     "/expense-tracker/:path*",
+//   ],
+// };
