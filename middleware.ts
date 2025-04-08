@@ -42,17 +42,8 @@ export async function middleware(req: NextRequest) {
 const matcher = [
   "/",
   ...protectedRoutes.map((r) => `${r}/:path*`),
-  ...authPages.map((a) => `${a}/:path*`),
+  ...authPages.map((r) => `${r}/:path*`),
 ];
 export const config = {
   matcher,
 };
-
-// export const config = {
-//   matcher: [
-//     "/",
-//     "/auth/:path*",
-//     "/dashboard/:path*",
-//     "/expense-tracker/:path*",
-//   ],
-// };
