@@ -3,19 +3,20 @@
 import { useEffect, useState } from "react";
 import {
   TRANSACTION_CATEGORY_TYPE_OPTIONS,
+  TransactionCategory,
   TransactionCategoryType,
 } from "../types";
 import { useTransactionCategoryFormStore } from "../stores";
 import EmojiSelector from "@/components/EmojiSelector";
 import ColorSelector from "@/components/ColorSelector";
 
-export default function TransactionCategoryForm({
-  userId,
-}: {
+interface Props {
   userId: string;
-}) {
-  const { selected, add, update, categories } =
-    useTransactionCategoryFormStore();
+  categories: TransactionCategory[];
+}
+
+export default function TransactionCategoryForm({ userId, categories }: Props) {
+  const { selected, add, update } = useTransactionCategoryFormStore();
 
   const [name, setName] = useState(selected?.name ?? "");
   const [color, setColor] = useState<string | null>(null);
@@ -30,7 +31,6 @@ export default function TransactionCategoryForm({
   );
 
   const isTopLevel = !parentId;
-
   const isEditing = !!selected?.id;
 
   useEffect(() => {

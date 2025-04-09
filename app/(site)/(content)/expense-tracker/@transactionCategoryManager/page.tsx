@@ -1,8 +1,8 @@
 import { getUser } from "@/actions/auth/user.action";
+import { TransactionCategory } from "@/features/transactionCategory/types";
 import { fetchCategories } from "@/features/transactionCategory/actions";
 import TransactionCategoryForm from "@/features/transactionCategory/components/CategoryForm";
 import TransactionCategoryTree from "@/features/transactionCategory/components/CategoryTree";
-import { TransactionCategory } from "@/features/transactionCategory/types";
 
 export default async function TransactionCategoryManagerPage() {
   const user = await getUser({ serverComponent: true });
@@ -18,7 +18,7 @@ export default async function TransactionCategoryManagerPage() {
         </div>
         <div>
           <h2 className="text-lg font-bold">카테고리 생성/수정</h2>
-          <TransactionCategoryForm userId={user.id} />
+          <TransactionCategoryForm categories={categories} userId={user.id} />
         </div>
       </div>
     </div>
