@@ -6,7 +6,6 @@ import {
   TransactionCategory,
 } from "@/features/transactionCategory/types";
 import {
-  fetchCategories,
   updateCategory,
   insertCategory,
   softDeleteCategory,
@@ -15,7 +14,6 @@ import {
 type CategoryStore = {
   categories: TransactionCategory[];
   selected: TransactionCategory | null;
-  fetch: (userId: string) => Promise<void>;
   select: (cat: TransactionCategory | null) => void;
   add: (cat: NewTransactionCatgory) => Promise<void>;
   update: (id: string, update: Partial<TransactionCategory>) => Promise<void>;
@@ -25,11 +23,6 @@ type CategoryStore = {
 export const useTransactionCategoryFormStore = create<CategoryStore>((set) => ({
   categories: [],
   selected: null,
-
-  fetch: async (userId) => {
-    const data = await fetchCategories(userId);
-    set({ categories: data });
-  },
 
   select: (cat) => set({ selected: cat }),
 

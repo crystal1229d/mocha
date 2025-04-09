@@ -1,10 +1,15 @@
 import { buildTree } from "../lib";
-import { useTransactionCategoryFormStore } from "../stores";
-import { TRANSACTION_CATEGORY_TYPE_OPTIONS } from "../types";
+import {
+  TRANSACTION_CATEGORY_TYPE_OPTIONS,
+  TransactionCategory,
+} from "../types";
 import CategoryNode from "./CategoryNode";
 
-export default function TransactionCategoryTree() {
-  const { categories } = useTransactionCategoryFormStore();
+interface Props {
+  categories: TransactionCategory[];
+}
+
+export default function TransactionCategoryTree({ categories }: Props) {
   const tree = buildTree(categories);
 
   return (

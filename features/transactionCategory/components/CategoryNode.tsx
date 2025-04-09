@@ -1,3 +1,5 @@
+"use client";
+
 import { lightenColor } from "../lib";
 import { useTransactionCategoryFormStore } from "../stores";
 import { TransactionCategoryTreeNode } from "../types";
