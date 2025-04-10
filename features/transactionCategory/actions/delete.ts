@@ -1,6 +1,7 @@
 "use server";
 
 import { createServerSideClient } from "@/lib/supabase/supabase";
+import { revalidateTag } from "next/cache";
 
 export async function softDeleteCategory(id: string) {
   const supabase = await createServerSideClient();
@@ -15,5 +16,6 @@ export async function softDeleteCategory(id: string) {
     throw new Error(error.message);
   }
 
+  revalidateTag("transaction-categories");
   return { success: true };
 }

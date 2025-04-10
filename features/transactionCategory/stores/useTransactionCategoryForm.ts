@@ -12,41 +12,35 @@ import {
 } from "@/features/transactionCategory/actions";
 
 type CategoryStore = {
-  categories: TransactionCategory[];
   selected: TransactionCategory | null;
   select: (cat: TransactionCategory | null) => void;
-  add: (cat: NewTransactionCatgory) => Promise<void>;
-  update: (id: string, update: Partial<TransactionCategory>) => Promise<void>;
+  add: (cat: NewTransactionCatgory) => Promise<TransactionCategory>;
+  update: (
+    id: string,
+    update: Partial<TransactionCategory>
+  ) => Promise<TransactionCategory>;
   remove: (id: string) => Promise<void>;
 };
 
 export const useTransactionCategoryFormStore = create<CategoryStore>((set) => ({
-  categories: [],
   selected: null,
 
   select: (cat) => set({ selected: cat }),
 
   add: async (cat: NewTransactionCatgory) => {
     const newCat = await insertCategory(cat);
-    set((s) => ({
-      categories: [...s.categories, newCat],
-      selected: null,
-    }));
+    set({ selected: null });
+    return newCat;
   },
 
   update: async (id, update) => {
     const updated = await updateCategory(id, update);
-    set((s) => ({
-      categories: s.categories.map((c) => (c.id === id ? updated : c)),
-      selected: null,
-    }));
+    set({ selected: null });
+    return updated;
   },
 
   remove: async (id) => {
     await softDeleteCategory(id);
-    set((s) => ({
-      categories: s.categories.filter((c) => c.id !== id),
-      selected: null,
-    }));
+    set({ selected: null });
   },
 }));

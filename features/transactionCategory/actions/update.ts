@@ -2,6 +2,7 @@
 
 import { createServerSideClient } from "@/lib/supabase/supabase";
 import { TablesUpdate } from "@/types/supabase";
+import { revalidateTag } from "next/cache";
 
 export async function updateCategory(
   id: string,
@@ -21,5 +22,6 @@ export async function updateCategory(
     throw new Error(error.message);
   }
 
+  revalidateTag("transaction-categories");
   return data;
 }

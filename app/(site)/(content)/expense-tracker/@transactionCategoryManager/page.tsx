@@ -7,6 +7,7 @@ import TransactionCategoryTree from "@/features/transactionCategory/components/C
 export default async function TransactionCategoryManagerPage() {
   const user = await getUser({ serverComponent: true });
   if (!user) throw new Error("User not found");
+
   const categories: TransactionCategory[] = await fetchCategories(user.id);
 
   return (

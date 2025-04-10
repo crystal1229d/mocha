@@ -2,6 +2,7 @@
 
 import { createServerSideClient } from "@/lib/supabase/supabase";
 import { TablesInsert } from "@/types/supabase";
+import { revalidateTag } from "next/cache";
 
 export async function insertCategory(
   category: TablesInsert<"transaction_categories">
@@ -19,5 +20,6 @@ export async function insertCategory(
     throw new Error(error.message);
   }
 
+  revalidateTag("transaction-categories");
   return data;
 }
